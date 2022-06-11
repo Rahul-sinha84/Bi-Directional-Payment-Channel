@@ -1,0 +1,79 @@
+.hashes {
+  margin: 5rem auto;
+  width: 80%;
+  &__container {
+    &--item {
+      margin: 1rem 0;
+      border: 3px solid #eee;
+      padding: 1rem 2rem;
+      &__upper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &--hash {
+        }
+        &--status {
+        }
+        &--btns {
+          .hash-btn {
+            font-size: 1.2rem;
+            padding: 0.2rem 0.5rem;
+            cursor: pointer;
+            margin: 0 1rem;
+            border: none;
+            border-radius: 5px;
+            color: white;
+          }
+          .decline {
+            background-color: #ca0b00;
+            &:hover {
+              background-color: #b70b01;
+            }
+            &:active {
+              background-color: #a20800;
+            }
+          }
+          .sign {
+            background-color: #3593e1;
+            &:hover {
+              background-color: rgb(37, 121, 189);
+            }
+            &:active {
+              background-color: rgb(15, 109, 186);
+            }
+          }
+          .change-balance {
+            background-color: #59a28a;
+            &:hover {
+              background-color: #3f9e7f;
+            }
+            &:active {
+              background-color: #267b5e;
+            }
+          }
+          .disabled {
+            background-color: #cccccc !important;
+            cursor: not-allowed;
+          }
+        }
+      }
+      &__lower {
+        margin-top: 0.8rem;
+        .declined-message {
+          color: #ca0b00;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.title {
+  font-size: 1.2rem;
+  text-align: center;
+}
+.value {
+  text-align: center;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}

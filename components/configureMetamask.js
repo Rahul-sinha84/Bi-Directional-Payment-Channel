@@ -3,8 +3,7 @@ import { ethers } from "ethers";
 // in the root directory
 export const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
 //import artifacts of the contract as 'Artifacts' here !!
-const Artifacts = "";
-// import Artifacts from "../artifacts/contracts/Greeter.sol/Greeter.json";
+import Artifacts from "../artifacts/contracts/BiDirectional.sol/BiDirectional.json";
 
 export const firstFunc = async (
   setContract,

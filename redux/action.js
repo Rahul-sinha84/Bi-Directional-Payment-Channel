@@ -5,6 +5,7 @@ import {
   METAMASK_CONNECT_FUNCTION,
   METAMASK_STATUS,
   NETWORK_ID,
+  SHOW_LOADER,
 } from "./types";
 
 export const changeMetamaskStatus = (payload) => ({
@@ -25,3 +26,4 @@ export const changeMetamaskConnectFunction = (payload) => ({
 });
 export const changeNetworkId = (payload) => ({ type: NETWORK_ID, payload });
 export const changeLoad = (payload) => ({ type: LOAD, payload });
+export const changeShowLoader = (payload) => ({ type: SHOW_LOADER, payload });

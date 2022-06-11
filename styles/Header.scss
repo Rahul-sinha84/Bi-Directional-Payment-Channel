@@ -1,0 +1,53 @@
+.header {
+  padding: 1rem 2rem;
+  background-color: black;
+  &__container {
+    display: flex;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    &--first {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: space-evenly;
+      &__item {
+        a {
+          text-decoration: none;
+          color: inherit;
+        }
+        padding: 1rem 0.5rem;
+      }
+    }
+    &--second {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: flex-end;
+      &__item {
+        &--cnct-btn {
+          cursor: pointer;
+          padding: 0.5rem 0.5rem;
+          font-size: 1.05rem;
+          color: white;
+          background-color: black;
+          outline: none;
+          font-weight: 700;
+          border-radius: 50rem;
+          border: 3px solid white;
+        }
+        &--acc-display {
+          cursor: pointer;
+          padding: 0.5rem 0.5rem;
+          font-size: 1.05rem;
+          color: white;
+          background-color: black;
+          outline: none;
+          font-weight: 700;
+          border-radius: 50rem;
+          border: 3px solid white;
+        }
+      }
+    }
+  }
+}

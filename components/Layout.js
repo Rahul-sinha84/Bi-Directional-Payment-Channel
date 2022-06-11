@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   contractAddress,
   checkMetamaskStatus,
@@ -17,6 +17,9 @@ import {
   changeNetworkId,
 } from "../redux/action";
 
+import Header from "./Header";
+import Modal from "./Modal";
+
 const Layout = ({
   children,
   changeContractInstance,
@@ -34,7 +37,10 @@ const Layout = ({
     networkId,
     metamaskStatus,
     metamaskConnectFunction,
+    showLoader,
   } = state;
+
+  const [isAllowed, setIsAllowed] = useState(false);
 
   //default
   useEffect(() => {
@@ -55,24 +61,41 @@ const Layout = ({
   // for updating the change when metamask configuration changes !!
   useEffect(() => {
     // function to update the values of state
-    //    getContractData();
+    getContractData();
     // for listening of events
     //    listenToEvents(contract);
   }, [currentAccount, contractInstance, load]);
 
+  const getContractData = async () => {
+    if (!contractInstance.address) return;
+
+    const _user1 = await contractInstance.users(0);
+    const _user2 = await contractInstance.users(1);
+    const _isAllowed =
+      parseInt(_user1, 16) === parseInt(currentAccount, 16) ||
+      parseInt(_user2, 16) === parseInt(currentAccount, 16);
+    setIsAllowed(_isAllowed);
+  };
+
   return (
     <>
-      <h1>Hello, Blockchain !!</h1>
-      {!metamaskStatus ? (
-        <button onClick={() => metamaskConnectFunction(changeMetamaskStatus)}>
-          Connect Metamask
-        </button>
+      <Modal active={showLoader} />
+      {isAllowed ? (
+        <>
+          <Header
+            metamaskConnectFunction={metamaskConnectFunction}
+            changeMetamaskStatus={changeMetamaskStatus}
+          />
+          {children}
+        </>
       ) : (
         <>
-          {children}
-          <h3>Contract address: {contractAddress}</h3>
-          <h4>Current account: {currentAccount}</h4>
-          <h4>Current chain-id: {networkId}</h4>
+          <h1 style={{ textAlign: "center" }}>
+            You Are not Allowed for this application !!
+          </h1>
+          <button onClick={() => metamaskConnectFunction(changeMetamaskStatus)}>
+            Connect Metamask
+          </button>
         </>
       )}
     </>
